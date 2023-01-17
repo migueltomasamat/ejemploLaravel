@@ -14,7 +14,8 @@ class PistaController extends Controller
      */
     public function index()
     {
-        return Pista::all();
+        $pistas = Pista::all();
+        return view("pistas.index",['pistas'=>$pistas]);
     }
 
     /**
