@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Pista;
 use Illuminate\Http\Request;
+use Illuminate\Validation\Rule;
 
 class PistaController extends Controller
 {
@@ -37,18 +38,29 @@ class PistaController extends Controller
      */
     public function store(Request $request)
     {
+        //var_dump($request);
        $this->validate($request,[
-           'luz'=>'required|boolean',
+           'luz'=>'boolean',
            'tipoPista'=>Rule::in(['Individual', 'Dobles']),
-            'cubierta' =>'required|boolean',
-           'disponible'=>'required|boolean',
-           'precio'=> 'required|decimal:0,2'
+            'cubierta' =>'boolean',
+           'disponible'=>'boolean',
+           'precioLuz'=> 'required|decimal:0,2'
        ]);
 
-       Pista::create($request['luz'],$request['tipoPista'],
-           $request['cubierta'],$request['disponible'],$request['precio']);
 
-       return back();
+       $pista=Pista::create([
+           'luz'=>$request['luz'] ?? 0,
+           'tipoPista'=>$request['tipoPista'],
+           'cubierta'=>$request['cubierta'] ?? 0,
+           'disponible'=>$request['disponible'] ?? 0,
+           'precioLuz'=>$request['precioLuz']
+       ]);
+        if ($pista){
+            return redirect('/pista');
+        }else{
+            return back();
+        }
+
 
     }
 
@@ -60,7 +72,8 @@ class PistaController extends Controller
      */
     public function show(Pista $pista)
     {
-        //
+        echo "La pista: ".$pista->id;
+        return view('pistas.show',compact('pista'));
     }
 
     /**

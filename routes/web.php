@@ -23,7 +23,7 @@ Route::get('/', function () {
 
 //Petición get de todas las pistas
 Route::get('/pista', "PistaController@index");
-Route::get('/pista/{id}', "PistaController@show");
+Route::get('/pista/{pista}', "PistaController@show");
 
 Route::post('/pista', "PistaController@store")->name('guardarPista');
 Route::put('/pista', "PistaController@update");
