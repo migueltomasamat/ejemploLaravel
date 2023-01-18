@@ -19,13 +19,13 @@ Route::get('/', function () {
     $opciones=['tiempo'=>25,'carga'=>'lazy'];
 
     return view('index',compact('nombre','apellidos','opciones'));
-});
+})->name('home');
 
 //Petición get de todas las pistas
 Route::get('/pista', "PistaController@index");
 Route::get('/pista/{id}', "PistaController@show");
 
-Route::post('/pista', "PistaController@store");
+Route::post('/pista', "PistaController@store")->name('guardarPista');
 Route::put('/pista', "PistaController@update");
 Route::patch('/pista', "PistaController@update");
 Route::delete('/pista', "PistaController@destroy");

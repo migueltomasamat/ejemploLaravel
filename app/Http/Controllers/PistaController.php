@@ -14,6 +14,7 @@ class PistaController extends Controller
      */
     public function index()
     {
+        //$this->crearPistas();
         $pistas = Pista::all();
         return view("pistas.index",['pistas'=>$pistas]);
     }
@@ -25,7 +26,7 @@ class PistaController extends Controller
      */
     public function create()
     {
-        //
+        return view('pistas.create');
     }
 
     /**
@@ -36,7 +37,19 @@ class PistaController extends Controller
      */
     public function store(Request $request)
     {
-        //
+       $this->validate($request,[
+           'luz'=>'required|boolean',
+           'tipoPista'=>Rule::in(['Individual', 'Dobles']),
+            'cubierta' =>'required|boolean',
+           'disponible'=>'required|boolean',
+           'precio'=> 'required|decimal:0,2'
+       ]);
+
+       Pista::create($request['luz'],$request['tipoPista'],
+           $request['cubierta'],$request['disponible'],$request['precio']);
+
+       return back();
+
     }
 
     /**
@@ -82,5 +95,21 @@ class PistaController extends Controller
     public function destroy(Pista $pista)
     {
         //
+    }
+
+    public function crearPistas(){
+        $pista = new Pista();
+
+        $pista->luz=true;
+        $pista->precioLuz=4.5;
+        $pista->tipoPista='Individual';
+
+        $pista->save();
+
+        $pista->luz=true;
+        $pista->precioLuz=9;
+        $pista->tipoPista='Dobles';
+
+        $pista->save();
     }
 }
