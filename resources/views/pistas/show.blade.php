@@ -44,11 +44,30 @@
                                 </div>
                                 <div class="col-1">
                                     <div class="btn-group py-2">
-                                        <form action="/pista/{{$pista->id}}" method="post">
-                                            {{csrf_field()}}
-                                            @method('delete')
-                                            <input type="submit" class="btn btn-sm btn-outline-danger" value="Borrar">
-                                        </form>
+                                        <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                                            <div class="modal-dialog">
+                                                <div class="modal-content">
+                                                    <div class="modal-header">
+                                                        <h1 class="modal-title fs-5" id="staticBackdropLabel">Borrar Pista</h1>
+                                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                    </div>
+                                                    <div class="modal-body">
+                                                        <p>Desea borrar esta la pista {{$pista->id}}. La acción no se podrá deshacer</p>
+                                                    </div>
+                                                    <div class="modal-footer">
+                                                        <button type="button" class="btn btn-sm btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                                                        <form action="/pista/{{$pista->id}}" method="post">
+                                                            {{csrf_field()}}
+                                                            @method('delete')
+                                                            <input type="submit" class="btn btn-sm btn-outline-danger" value="Borrar">
+                                                        </form>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <button type="button" class="btn btn-sm btn-outline-danger" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+                                            Borrar
+                                        </button>
                                     </div>
                                 </div>
                             </div>
