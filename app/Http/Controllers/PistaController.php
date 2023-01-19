@@ -84,7 +84,7 @@ class PistaController extends Controller
      */
     public function edit(Pista $pista)
     {
-        //
+        return view('pistas.edit',compact('pista'));
     }
 
     /**
@@ -96,7 +96,13 @@ class PistaController extends Controller
      */
     public function update(Request $request, Pista $pista)
     {
-        //
+        $this->validate($request,[
+            'luz'=>'boolean',
+            'tipoPista'=>Rule::in(['Individual', 'Dobles']),
+            'cubierta' =>'boolean',
+            'disponible'=>'boolean',
+            'precioLuz'=> 'required|decimal:0,2'
+        ]);
     }
 
     /**

@@ -31,7 +31,7 @@
                             @endif
                             @if($pista->disponible)
                                 <div class="btn-group py-2">
-                                    <a href="/reserva/{{$pista->id}}"><button type="button" class="btn btn-sm btn-outline-primary">Reservar</button></a>
+                                    <a href="/modificar-pista/{{$pista->id}}"><button type="button" class="btn btn-sm btn-outline-primary">Edita</button></a>
                                 </div>
                             @else
                                 <p class="text-danger">Pista no disponible</p>
