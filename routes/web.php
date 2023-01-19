@@ -23,18 +23,18 @@ Route::get('/', function () {
 
 //Petición get de todas las pistas
 Route::get('/pista', "PistaController@index");
-Route::get('/pista/{id}', "PistaController@show");
+Route::get('/pista/{pista}', "PistaController@show");
 
 Route::post('/pista', "PistaController@store")->name('guardarPista');
-Route::put('/pista', "PistaController@update");
-Route::patch('/pista', "PistaController@update");
-Route::delete('/pista', "PistaController@destroy");
+Route::put('/pista/{pista}', "PistaController@update");
+Route::patch('/pista/{pista}', "PistaController@update");
+Route::delete('/pista/{pista}', "PistaController@destroy");
 
 
 
 
 Route::get('/crear-pista', "PistaController@create");
-Route::get('/modificar-pista', "PistaController@edit");
+Route::get('/modificar-pista/{pista}', "PistaController@edit");
 
 Route::get('/login', "SesionController@index");
 
