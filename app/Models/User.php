@@ -12,6 +12,12 @@ class User extends Authenticatable
 {
     use HasApiTokens, HasFactory, Notifiable;
 
+    //protected $with = ['jugador'];
+
+    public function jugador(){
+        return $this->hasOne(\App\Models\Jugador::class);
+    }
+
     /**
      * The attributes that are mass assignable.
      *

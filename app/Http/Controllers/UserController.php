@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class UserController extends Controller
@@ -13,7 +14,7 @@ class UserController extends Controller
      */
     public function index()
     {
-        return User::all();
+        return User::with('jugador')->get();
     }
 
     /**
@@ -23,7 +24,7 @@ class UserController extends Controller
      */
     public function create()
     {
-        //
+
     }
 
     /**
@@ -34,18 +35,40 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        /*$validated = $request->validate([
+           'nombre'=>'required',
+            'apellidos'=>'required',
+            'telefono'=>'digits',
+            'email'=>'required|email',
+            'password'=>'required'
+        ]);*/
+
+        $user= new User();
+        $user->nombre=$request['nombre'];
+        $user->apellidos=$request['apellidos'];
+        $user->telefono=$request['telefono'];
+        $user->email=$request['email'];
+        $user->password = $request['password'];
+
+        $user->save();
+
+        $respuesta = [
+            "mensaje"=>'Usuario creado correctamente',
+            "usuario"=>$user
+        ];
+
+        return response($respuesta);
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param  User  $user
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(User $user)
     {
-        //
+        return User::with('jugador')->find($user->id);
     }
 
     /**
@@ -63,22 +86,49 @@ class UserController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param  User  $user
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, User $user)
     {
-        //
+        /*$validated = $request->validate([
+            'nombre'=>'required',
+            'apellidos'=>'required',
+            'telefono'=>'digits|minDigits:9|maxDigits:9',
+            'email'=>'email|unique:users',
+            'password'=>'min:6|'
+        ]);*/
+
+        $user->nombre=$request['nombre'];
+        $user->apellidos=$request['apellidos'];
+        $user->telefono=$request['telefono'];
+        $user->email=$request['email'];
+        $user->password = $request['password'];
+
+        $user->save();
+
+        $respuesta = [
+            "mensaje"=>'Usuario modificado correctamente',
+            "usuario"=>$user
+        ];
+
+        return response($respuesta);
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param  User  $user
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(User $user)
     {
-        //
+        $respuesta =[
+            "mensaje"=>"Usuario $user->id borrado correctamente",
+            "usuario"=>$user
+        ];
+        $user->delete();
+        return response($respuesta);
+
     }
 }
