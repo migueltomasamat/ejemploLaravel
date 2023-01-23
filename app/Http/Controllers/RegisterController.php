@@ -2,10 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Sesion;
+use App\Models\Register;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 
-class SesionController extends Controller
+class RegisterController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,7 +15,7 @@ class SesionController extends Controller
      */
     public function index()
     {
-        return view('login');
+        //
     }
 
     /**
@@ -24,7 +25,7 @@ class SesionController extends Controller
      */
     public function create()
     {
-        //
+        return view('register');
     }
 
     /**
@@ -35,16 +36,28 @@ class SesionController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $user= new User();
+        $user->nombre=$request['nombre'];
+        $user->apellidos=$request['apellidos'];
+        $user->email=$request['email'];
+        $user->telefono=$request['telefono'];
+        $user->password=Hash::make($request['password']);
+
+        $user->save();
+
+        auth()->login($user,true);
+
+        return redirect('home');
+
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Sesion  $sesion
+     * @param  \App\Models\Register  $register
      * @return \Illuminate\Http\Response
      */
-    public function show(Sesion $sesion)
+    public function show(Register $register)
     {
         //
     }
@@ -52,10 +65,10 @@ class SesionController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Sesion  $sesion
+     * @param  \App\Models\Register  $register
      * @return \Illuminate\Http\Response
      */
-    public function edit(Sesion $sesion)
+    public function edit(Register $register)
     {
         //
     }
@@ -64,10 +77,10 @@ class SesionController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Sesion  $sesion
+     * @param  \App\Models\Register  $register
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Sesion $sesion)
+    public function update(Request $request, Register $register)
     {
         //
     }
@@ -75,10 +88,10 @@ class SesionController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Sesion  $sesion
+     * @param  \App\Models\Register  $register
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Sesion $sesion)
+    public function destroy(Register $register)
     {
         //
     }

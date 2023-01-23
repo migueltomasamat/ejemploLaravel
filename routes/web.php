@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\RegisterController;
 
 /*
 |--------------------------------------------------------------------------
@@ -37,5 +38,8 @@ Route::get('/crear-pista', "PistaController@create");
 Route::get('/modificar-pista/{pista}', "PistaController@edit");
 
 Route::get('/login', "SesionController@index");
+Route::get('/register',"RegisterController@create");
+Route::post('/register',[RegisterController::class,'store']);
+
 
 
