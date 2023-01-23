@@ -103,6 +103,17 @@ class PistaController extends Controller
             'disponible'=>'boolean',
             'precioLuz'=> 'required|decimal:0,2'
         ]);
+
+        $pista->luz=$request['luz']?? 0;
+        $pista->tipoPista=$request['tipoPista'];
+        $pista->cubierta=$request['cubierta'] ?? 0;
+        $pista->disponible=$request['disponible'] ?? 0;
+        $pista->precioLuz=$request['precioLuz'];
+
+        $pista->save();
+
+        return redirect("/pista/$pista->id");
+
     }
 
     /**
@@ -113,7 +124,12 @@ class PistaController extends Controller
      */
     public function destroy(Pista $pista)
     {
-        //
+        try{
+            $pista->deleteOrFail();
+        } catch (\Throwable $e) {
+            return redirect ('/');
+        }
+        return redirect('/pista');
     }
 
     public function crearPistas(){
