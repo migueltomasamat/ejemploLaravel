@@ -31,6 +31,10 @@
                         <label for="inputPassword" class="form-label">Contraseña</label>
                         <input type="password" class="form-control" id="inputPassword" name="password">
                     </div>
+                    <div class="mb-3">
+                        <label for="inputPasswordConfirmation" class="form-label">Repite la contraseña</label>
+                        <input type="password" class="form-control" id="inputPasswordConfirmation" name="password_confirmation">
+                    </div>
                     <button type="submit" class="btn btn-primary">Enviar</button>
                 </form>
             </div>

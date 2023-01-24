@@ -1,8 +1,8 @@
-@include('parciales.head')
+@include('partials.head')
 
-@include('parciales.nav')
+@include('partials.nav')
 
-@include ('parciales.carrusel')
+@include ('partials.carrusel')
 
 @include('parciales.tressegmentos')
 

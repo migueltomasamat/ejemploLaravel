@@ -37,9 +37,15 @@ Route::delete('/pista/{pista}', "PistaController@destroy");
 Route::get('/crear-pista', "PistaController@create");
 Route::get('/modificar-pista/{pista}', "PistaController@edit");
 
-Route::get('/login', "SesionController@index");
+Route::get('/login', "RegisterController@createLogin");
+Route::post('/login',"RegisterController@storeLogin")->middleware('guest');
+Route::get('/logout',[RegisterController::class,'destroyLogin']);
 Route::get('/register',"RegisterController@create");
 Route::post('/register',[RegisterController::class,'store']);
+
+Route::middleware('auth')->group(function(){
+
+});
 
 
 
