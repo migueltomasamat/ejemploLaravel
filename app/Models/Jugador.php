@@ -11,13 +11,13 @@ class Jugador extends Model
     use HasFactory;
 
     protected $guarded = ['id'];
-    protected $with =['parejas'];
+    //protected $with =['pareja'];
 
     public function user(){
         return $this->belongsTo(\App\Models\User::class);
     }
     public function parejas(){
-        return $this->hasMany(Pareja::class,'jugador1_id');
-
+        return $this->belongsToMany(Pareja::class);
     }
+
 }

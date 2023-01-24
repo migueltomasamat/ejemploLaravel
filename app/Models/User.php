@@ -18,6 +18,10 @@ class User extends Authenticatable
         return $this->hasOne(\App\Models\Jugador::class);
     }
 
+    public function intervalos(){
+        return $this->hasMany(Intervalo::class);
+    }
+
     /**
      * The attributes that are mass assignable.
      *

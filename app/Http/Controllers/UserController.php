@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Intervalo;
 use App\Models\User;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 
 class UserController extends Controller
@@ -68,7 +70,7 @@ class UserController extends Controller
      */
     public function show(User $user)
     {
-        return User::with('jugador')->find($user->id);
+        return User::with('jugador','intervalos')->find($user->id);
     }
 
     /**
@@ -130,5 +132,22 @@ class UserController extends Controller
         $user->delete();
         return response($respuesta);
 
+    }
+
+    public function attach(Request $request, User $user){
+        $intervalo = new Intervalo();
+        $intervalo->fecha_hora_inicio=Carbon::createFromFormat('Y-m-d H:i:s',$request['fecha_hora_inicio']);
+        $intervalo->fecha_hora_fin=Carbon::createFromFormat('Y-m-d H:i:s',$request['fecha_hora_fin']);
+        $intervalo->user_id = $user->id;
+        $intervalo->pista_id= $request['pista_id'];
+        $intervalo->save();
+        return response($user);
+    }
+
+
+
+    public function intervalos(User $user){
+        $intervalos = $user->intervalos;
+        return response($intervalos);
     }
 }

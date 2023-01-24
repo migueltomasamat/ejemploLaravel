@@ -9,7 +9,7 @@ class Pareja extends Model
 {
     use HasFactory;
 
-    public function jugador(){
-        return $this->belongsTo(Jugador::class);
+    public function jugadors(){
+        return $this->belongsToMany(Jugador::class);
     }
 }

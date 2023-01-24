@@ -13,9 +13,12 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('parejas', function (Blueprint $table) {
+        Schema::create('intervalos', function (Blueprint $table) {
             $table->id();
-            $table->string('nombre');
+            $table->dateTime('fecha_hora_inicio');
+            $table->dateTime('fecha_hora_fin');
+            $table->foreignId('user_id')->nullable()->constrained();
+            $table->foreignId('pista_id')->nullable()->constrained();
             $table->timestamps();
         });
     }
@@ -27,6 +30,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('parejas');
+        Schema::dropIfExists('intervalos');
     }
 };

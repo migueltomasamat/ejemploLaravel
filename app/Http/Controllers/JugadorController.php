@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Jugador;
+use App\Models\Pareja;
 use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\Response;
 
@@ -15,11 +16,7 @@ class JugadorController extends Controller
      */
     public function index()
     {
-        $jugadores=Jugador::with('user')->get();
-        $respuesta = [];
-        foreach ($jugadores as $jugador){
-            $respuesta[]=$jugador;
-        }
+        $jugadores=Jugador::with('user','parejas')->get();
         return response($jugadores);
     }
 
@@ -63,7 +60,7 @@ class JugadorController extends Controller
     {
         if($jugador!==null){
 
-            $jugador=Jugador::with('user')->find($jugador->id);
+            $jugador=Jugador::with('user','parejas')->find($jugador->id);
             return response($jugador);
         }
         else{
@@ -120,5 +117,15 @@ class JugadorController extends Controller
         ];
         return response($respuesta,200);
 
+    }
+
+    public function attach(Request $request, Jugador $jugador,Pareja $pareja){
+        $jugador->parejas()->attach($pareja);
+        return response($pareja);
+    }
+
+    public function detach(Request $request, Jugador $jugador, Pareja $pareja){
+        $jugador->parejas()->detach($pareja);
+        return response(Pareja::find($pareja->id));
     }
 }
