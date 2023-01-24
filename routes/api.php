@@ -42,6 +42,8 @@ Route::middleware(['auth:sanctum'])->group(function (){
 
     Route::get('/logout',[ApiRegisterController::class,'logout']);
 
+
+
 });
 
 
