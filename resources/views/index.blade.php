@@ -4,6 +4,8 @@
 
 @include ('partials.carrusel')
 
-@include('parciales.tressegmentos')
+@include('partials.marquetings')
 
-@include('parciales.footer')
+@include('partials.featuretes')
+
+@include('partials.footer')

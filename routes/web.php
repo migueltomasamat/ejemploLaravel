@@ -38,13 +38,16 @@ Route::get('/crear-pista', "PistaController@create");
 Route::get('/modificar-pista/{pista}', "PistaController@edit");
 
 Route::get('/login', "RegisterController@createLogin");
-Route::post('/login',"RegisterController@storeLogin")->middleware('guest');
-Route::get('/logout',[RegisterController::class,'destroyLogin']);
+
 Route::get('/register',"RegisterController@create");
-Route::post('/register',[RegisterController::class,'store']);
+Route::post('/login',"RegisterController@storeLogin");
+
 
 Route::middleware('auth')->group(function(){
 
+    Route::post('/register',[RegisterController::class,'store']);
+
+    Route::get('/logout',[RegisterController::class,'destroyLogin']);
 });
 
 

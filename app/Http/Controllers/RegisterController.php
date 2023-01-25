@@ -12,7 +12,8 @@ use App\Models\User;
 class RegisterController extends Controller
 {
     public function __construct(){
-        $this->middleware('guest',['destroyLogin']);
+        $this->middleware('guest')->except('destroyLogin');
+        $this->middleware('auth')->only('destroyLogin');
     }
     /**
      * Display a listing of the resource.
