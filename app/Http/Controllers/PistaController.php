@@ -72,8 +72,10 @@ class PistaController extends Controller
      */
     public function show(Pista $pista)
     {
-        echo "La pista: ".$pista->id;
-        return view('pistas.show',compact('pista'));
+        //echo "La pista: ".$pista->id;
+        $anteriorPista = Pista::where('id', '<', $pista->id)->max('id');
+        $siguientePista = Pista::where('id', '>', $pista->id)->min('id');
+        return view('pistas.show',compact('pista','anteriorPista','siguientePista'));
     }
 
     /**

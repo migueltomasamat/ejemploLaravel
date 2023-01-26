@@ -15,11 +15,7 @@ use App\Http\Controllers\RegisterController;
 */
 
 Route::get('/', function () {
-    $nombre='Carlos';
-    $apellidos='Martinez';
-    $opciones=['tiempo'=>25,'carga'=>'lazy'];
-
-    return view('index',compact('nombre','apellidos','opciones'));
+    return view('index');
 })->name('home');
 
 //Petición get de todas las pistas

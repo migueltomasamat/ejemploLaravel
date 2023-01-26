@@ -1,4 +1,4 @@
-@extends('layout')
+@extends('predefinido')
 
 @section('contenido')
     <div class="col-md-7 mx-5">
@@ -31,23 +31,59 @@
                             @endif
                             @if($pista->disponible)
                                 <div class="btn-group py-2">
-                                    <a href="/modificar-pista/{{$pista->id}}"><button type="button" class="btn btn-sm btn-outline-primary">Edita</button></a>
+                                    <a href="/reserva/{{$pista->id}}"><button type="button" class="btn btn-sm btn-outline-primary">Reservar</button></a>
                                 </div>
                             @else
                                 <p class="text-danger">Pista no disponible</p>
                             @endif
-
+                            @auth
+                            <div class="row">
+                                <div class="col-1">
+                                    <div class="btn-group py-2">
+                                        <a href="/modificar-pista/{{$pista->id}}"><button type="button" class="btn btn-sm btn-outline-primary">Editar</button></a>
+                                    </div>
+                                </div>
+                                <div class="col-1">
+                                    <div class="btn-group py-2">
+                                        <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                                            <div class="modal-dialog">
+                                                <div class="modal-content">
+                                                    <div class="modal-header">
+                                                        <h1 class="modal-title fs-5" id="staticBackdropLabel">Borrar Pista</h1>
+                                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                    </div>
+                                                    <div class="modal-body">
+                                                        <p>Desea borrar esta la pista {{$pista->id}}. La acción no se podrá deshacer</p>
+                                                    </div>
+                                                    <div class="modal-footer">
+                                                        <button type="button" class="btn btn-sm btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                                                        <form action="/pista/{{$pista->id}}" method="post">
+                                                            {{csrf_field()}}
+                                                            @method('delete')
+                                                            <input type="submit" class="btn btn-sm btn-outline-danger" value="Borrar">
+                                                        </form>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <button type="button" class="btn btn-sm btn-outline-danger" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+                                            Borrar
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                            @endauth
                             <nav>
                                 <ul class="pagination">
-                                    @if($pista->id!=1)
-                                        <li class="page-item"><a class="page-link" href="/pista/{{($pista->id)-1}}">Anterior</a></li>
+                                    @if($anteriorPista)
+                                        <li class="page-item"><a class="page-link" href="/pista/{{$anteriorPista}}">Anterior</a></li>
                                     @else
-                                        <li class="page-item disabled"><a class="page-link" href="/pista/{{($pista->id)-1}}">Previous</a></li>
+                                        <li class="page-item disabled"><a class="page-link" href="/pista/{{$anteriorPista}}">Anterior</a></li>
                                     @endif
-                                    @if($pista->id!=\App\Models\Pista::latest()->first()->id)
-                                        <li class="page-item"><a class="page-link" href="/pista/{{($pista->id)+1}}">Siguiente</a></li>
+                                    @if($siguientePista)
+                                        <li class="page-item"><a class="page-link" href="/pista/{{$siguientePista}}">Siguiente</a></li>
                                     @else
-                                        <li class="page-item disabled"><a class="page-link" href="/pista/{{($pista->id)+1}}">Siguiente</a></li>
+                                        <li class="page-item disabled"><a class="page-link" href="/pista/{{$siguientePista}}">Siguiente</a></li>
                                     @endif
                                 </ul>
                             </nav>

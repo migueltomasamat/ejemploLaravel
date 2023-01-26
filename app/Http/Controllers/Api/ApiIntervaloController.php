@@ -1,11 +1,12 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Api;
 
-use App\Models\Sesion;
+use App\Http\Controllers\Controller;
+use App\Models\Intervalo;
 use Illuminate\Http\Request;
 
-class SesionController extends Controller
+class ApiIntervaloController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -13,16 +14,6 @@ class SesionController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index()
-    {
-        return view('login');
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
     {
         //
     }
@@ -41,21 +32,10 @@ class SesionController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Sesion  $sesion
+     * @param  \App\Models\Intervalo  $intervalo
      * @return \Illuminate\Http\Response
      */
-    public function show(Sesion $sesion)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\Sesion  $sesion
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Sesion $sesion)
+    public function show(Intervalo $intervalo)
     {
         //
     }
@@ -64,10 +44,10 @@ class SesionController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Sesion  $sesion
+     * @param  \App\Models\Intervalo  $intervalo
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Sesion $sesion)
+    public function update(Request $request, Intervalo $intervalo)
     {
         //
     }
@@ -75,10 +55,10 @@ class SesionController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Sesion  $sesion
+     * @param  \App\Models\Intervalo  $intervalo
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Sesion $sesion)
+    public function destroy(Intervalo $intervalo)
     {
         //
     }

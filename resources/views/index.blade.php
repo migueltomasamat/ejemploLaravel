@@ -4,7 +4,7 @@
 
 @include ('partials.carrusel')
 
-@include('partials.marquetings')
+@include('partials.marqueting')
 
 @include('partials.featuretes')
 

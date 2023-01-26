@@ -3,7 +3,6 @@
 namespace Database\Seeders;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
-use App\Models\Pista;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -15,14 +14,18 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        $this->call([
-            PistaSeeder::class
-        ]);
         // \App\Models\User::factory(10)->create();
 
         // \App\Models\User::factory()->create([
         //     'name' => 'Test User',
         //     'email' => 'test@example.com',
         // ]);
+        $this->call([UserSeeder::class,
+            JugadorSeeder::class,
+            ParejaSeeder::class,
+            JugadorParejaSeeder::class,
+            PistaSeeder::class,
+            IntervaloSeeder::class
+        ]);
     }
 }
