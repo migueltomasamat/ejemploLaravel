@@ -6,32 +6,32 @@
     </div>
     <div class="carousel-inner">
         <div class="carousel-item active">
-            <svg class="bd-placeholder-img" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" preserveAspectRatio="xMidYMid slice" focusable="false"><rect width="100%" height="100%" fill="#777"/></svg>
+            <img class="bd-placeholder-img" width="100%" height="140%" src="/img/head.jpg">
             <div class="container">
                 <div class="carousel-caption text-start">
-                    <h1>Example headline.</h1>
-                    <p>Some representative placeholder content for the first slide of the carousel.</p>
-                    <p><a class="btn btn-lg btn-primary" href="#">Sign up today</a></p>
+                    <h1>Cobra Pádel</h1>
+                    <p>Tú club de pádel en Petrer. Regístrate y descubre nuestras instalaciones</p>
+                    <p><a class="btn btn-lg btn-primary" href="/registrate">Regístrate</a></p>
                 </div>
             </div>
         </div>
         <div class="carousel-item">
-            <svg class="bd-placeholder-img" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" preserveAspectRatio="xMidYMid slice" focusable="false"><rect width="100%" height="100%" fill="#777"/></svg>
+            <img class="bd-placeholder-img" width="100%" height="140%" src="/img/nocturna.jpg">
             <div class="container">
                 <div class="carousel-caption">
-                    <h1>Another example headline.</h1>
-                    <p>Some representative placeholder content for the second slide of the carousel.</p>
-                    <p><a class="btn btn-lg btn-primary" href="#">Learn more</a></p>
+                    <h1>Nuestras Instalaciones</h1>
+                    <p>Tenemos unas instalaciones de vanguardia para que disfrutes de tu deporte favorito </p>
+                    <p><a class="btn btn-lg btn-primary" href="/pista">Descúbrelas</a></p>
                 </div>
             </div>
         </div>
         <div class="carousel-item">
-            <svg class="bd-placeholder-img" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" preserveAspectRatio="xMidYMid slice" focusable="false"><rect width="100%" height="100%" fill="#777"/></svg>
+            <img class="bd-placeholder-img" width="100%" height="140%" src="/img/lounge.jpg">
             <div class="container">
                 <div class="carousel-caption text-end">
-                    <h1>One more for good measure.</h1>
-                    <p>Some representative placeholder content for the third slide of this carousel.</p>
-                    <p><a class="btn btn-lg btn-primary" href="#">Browse gallery</a></p>
+                    <h1>No solo Pádel</h1>
+                    <p>Relájate en nuestro <em>Lounge</em> para disfrutar de una experiencia completa</p>
+                    <p><a class="btn btn-lg btn-primary" href="/lounge">Ver galería</a></p>
                 </div>
             </div>
         </div>

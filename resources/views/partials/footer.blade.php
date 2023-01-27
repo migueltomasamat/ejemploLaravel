@@ -1,6 +1,6 @@
 <footer class="container">
-    <p class="float-end"><a href="#">Back to top</a></p>
-    <p>&copy; 2017–2022 Company, Inc. &middot; <a href="#">Privacy</a> &middot; <a href="#">Terms</a></p>
+    <p class="float-end"><a href="#">Volver Arriba</a></p>
+    <p>&copy; 2022 Cobra Pádel. &middot; <a href="#">Privacidad</a> &middot; <a href="#">Terminos</a></p>
 </footer>
 </main>
 
