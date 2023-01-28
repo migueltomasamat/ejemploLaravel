@@ -10,4 +10,10 @@ class Pista extends Model
     use HasFactory;
 
     protected $fillable = ['luz','tipoPista','precioLuz','cubierta','disponible'];
+
+
+
+    public function intervalos(){
+        return $this->hasMany(Intervalo::class);
+    }
 }

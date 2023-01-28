@@ -17,8 +17,8 @@ return new class extends Migration
             $table->id();
             $table->dateTime('fecha_hora_inicio');
             $table->dateTime('fecha_hora_fin');
-            $table->foreignId('user_id')->nullable()->constrained()->cascadeOnDelete();
-            $table->foreignId('pista_id')->nullable()->constrained()->cascadeOnDelete();
+            $table->foreignId('user_id')->nullable()->cascadeOnDelete()->constrained();
+            $table->foreignId('pista_id')->nullable()->cascadeOnDelete()->constrained();
             $table->timestamps();
         });
     }

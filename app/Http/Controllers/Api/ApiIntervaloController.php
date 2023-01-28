@@ -4,7 +4,11 @@ namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
 use App\Models\Intervalo;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
+use App\Mail\ReservaMailController;
+use Illuminate\Support\Facades\Mail;
+use App\Models\User;
 
 class ApiIntervaloController extends Controller
 {
@@ -15,7 +19,7 @@ class ApiIntervaloController extends Controller
      */
     public function index()
     {
-        //
+        return response(Intervalo::with(['user','pista'])->get());
     }
 
     /**
@@ -26,7 +30,20 @@ class ApiIntervaloController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $intervalo= new Intervalo;
+        $intervalo->fecha_hora_inicio = Carbon::parse($request->fecha_hora_inicio);
+        $intervalo->fecha_hora_fin = Carbon::parse($request->fecha_hora_fin);
+        $intervalo->user_id = $request->user_id;
+        $intervalo->pista_id = $request->pista_id;
+
+        $intervalo->save();
+
+        Mail::to([$intervalo->user->email])->send(new ReservaMailController($intervalo));
+
+        return response([
+            "mensaje"=>"Intervalo almacenado correctamente",
+            "intervalo"=>Intervalo::with('user')->find($intervalo->id)
+        ]);
     }
 
     /**

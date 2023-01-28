@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "cbace0363223bc109544e0b454e11323",
+    "content-hash": "919e2f4cea5a39189f17f104017a9dfa",
     "packages": [
         {
             "name": "bennett-treptow/laravel-migration-generator",

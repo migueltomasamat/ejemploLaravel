@@ -4,6 +4,7 @@ use App\Http\Controllers\Api\ApiJugadorController;
 use App\Http\Controllers\Api\ApiRegisterController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Api\ApiIntervaloController;
 
 /*
 |--------------------------------------------------------------------------
@@ -33,6 +34,11 @@ con intervalos=true se muestran los intervalos con las pistas
 */
 Route::get('/pista/{pista}',[\App\Http\Controllers\Api\ApiPistaController::class,'show']);
 Route::get('/pista',[\App\Http\Controllers\Api\ApiPistaController::class,'index']);
+Route::post('/intervalo',[ApiIntervaloController::class,'store']);
+Route::get('/intervalo',[ApiIntervaloController::class,'index']);
+Route::get('/user',[\App\Http\Controllers\Api\APIUserController::class,'index']);
+Route::get('/user/{user}/intervalo',[\App\Http\Controllers\Api\APIUserController::class,'intervalos']);
+
 
 
 Route::middleware(['auth:sanctum'])->group(function (){
@@ -43,12 +49,11 @@ Route::middleware(['auth:sanctum'])->group(function (){
     Route::delete('jugador/{jugador}/pareja/{pareja}',[ApiJugadorController::class,'detach']);
 
     Route::post('/user',[\App\Http\Controllers\Api\APIUserController::class,'store']);
-    Route::get('/user',[\App\Http\Controllers\Api\APIUserController::class,'index']);
+
     Route::get('/user/{user}',[\App\Http\Controllers\Api\APIUserController::class,'show']);
     Route::put('/user/{user}',[\App\Http\Controllers\Api\APIUserController::class,'update']);
     Route::delete('/user/{user}',[\App\Http\Controllers\Api\APIUserController::class,'destroy']);
     Route::post('/user/{user}/intervalo',[\App\Http\Controllers\Api\APIUserController::class,'attach']);
-    Route::get('/user/{user}/intervalo',[\App\Http\Controllers\Api\APIUserController::class,'intervalos']);
 
     Route::post('/pista',[\App\Http\Controllers\Api\ApiPistaController::class,'store']);
     Route::put('/pista/{pista}',[\App\Http\Controllers\Api\ApiPistaController::class,'update']);
