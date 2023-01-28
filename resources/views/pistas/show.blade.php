@@ -36,7 +36,7 @@
                             @else
                                 <p class="text-danger">Pista no disponible</p>
                             @endif
-                            @auth
+                            @role('admin')
                             <div class="row">
                                 <div class="col-1">
                                     <div class="btn-group py-2">
@@ -72,7 +72,7 @@
                                     </div>
                                 </div>
                             </div>
-                            @endauth
+                            @endrole
                             <nav>
                                 <ul class="pagination">
                                     @if($anteriorPista)
