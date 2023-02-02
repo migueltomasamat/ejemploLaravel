@@ -34,11 +34,8 @@ con intervalos=true se muestran los intervalos con las pistas
 */
 Route::get('/pista/{pista}',[\App\Http\Controllers\Api\ApiPistaController::class,'show']);
 Route::get('/pista',[\App\Http\Controllers\Api\ApiPistaController::class,'index']);
-Route::post('/intervalo',[ApiIntervaloController::class,'store']);
-Route::get('/intervalo',[ApiIntervaloController::class,'index']);
-Route::get('/user',[\App\Http\Controllers\Api\APIUserController::class,'index']);
-Route::get('/user/{user}/intervalo',[\App\Http\Controllers\Api\APIUserController::class,'intervalos']);
-
+Route::post('/register',[ApiRegisterController::class,'store']);
+Route::post('/login',[ApiRegisterController::class,'login']);
 
 
 Route::middleware(['auth:sanctum'])->group(function (){
