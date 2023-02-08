@@ -17,8 +17,8 @@ class IntervaloSeeder extends Seeder
     public function run()
     {
         DB::table('intervalos')->insert([
-            'fecha_hora_inicio'=>Carbon::create(2022,03,22,8,0,0),
-            'fecha_hora_fin'=>Carbon::create(2022,03,22,9,0,0),
+            'fecha_hora_inicio'=>Carbon::create(2023,02,06,8,0,0),
+            'fecha_hora_fin'=>Carbon::create(2023,02,06,9,0,0),
             'user_id'=>1,
             'pista_id'=>1
         ]);

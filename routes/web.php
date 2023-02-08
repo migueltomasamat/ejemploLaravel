@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\RegisterController;
+use App\Http\Controllers\IntervaloController;
 
 /*
 |--------------------------------------------------------------------------
@@ -26,6 +27,8 @@ Route::post('/pista', "PistaController@store")->name('guardarPista');
 Route::put('/pista/{pista}', "PistaController@update");
 Route::patch('/pista/{pista}', "PistaController@update");
 Route::delete('/pista/{pista}', "PistaController@destroy");
+
+Route::get('/intervalo/{intervalo}',[IntervaloController::class,'index']);
 
 
 
