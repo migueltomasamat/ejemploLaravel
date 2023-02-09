@@ -16,7 +16,7 @@ return new class extends Migration
         Schema::create('pistas', function (Blueprint $table) {
             $table->id();
             $table->boolean('luz')->default(true)->nullable();
-            $table->float('precioLuz',unsigned: true);
+            $table->float('precioLuz',unsigned: true)->nullable()->default(null);
             $table->boolean('cubierta')->default(false)->nullable();
             $table->boolean('disponible')->default(true)->nullable();
             $table->enum('tipoPista',['Individual','Dobles']);
