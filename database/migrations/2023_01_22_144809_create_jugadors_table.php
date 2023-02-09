@@ -21,7 +21,7 @@ return new class extends Migration
             $table->integer('indiceResponsabilidad')->nullable()->default('100');
             $table->integer('numFederado')->nullable()->default(null);
             $table->boolean('renovacionAutomatica')->default(true)->nullable();
-            $table->bigInteger('user_id')->unsigned()->unique();
+            $table->bigInteger('user_id')->unsigned()->nullable()->unique()->default(null);
             $table->foreign('user_id')->references('id')->on('users');
             $table->boolean('partidasMixtas')->default(true)->nullable();
             $table->timestamps();

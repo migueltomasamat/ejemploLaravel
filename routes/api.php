@@ -5,6 +5,7 @@ use App\Http\Controllers\Api\ApiRegisterController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Api\ApiIntervaloController;
+use App\Http\Controllers\Api\ApiParejaController;
 
 /*
 |--------------------------------------------------------------------------
@@ -36,6 +37,14 @@ Route::get('/pista/{pista}',[\App\Http\Controllers\Api\ApiPistaController::class
 Route::get('/pista',[\App\Http\Controllers\Api\ApiPistaController::class,'index']);
 Route::post('/register',[ApiRegisterController::class,'store']);
 Route::post('/login',[ApiRegisterController::class,'login']);
+
+//Rutas asociadas a las parejas
+Route::get('/pareja',[ApiParejaController::class,"index"]);
+Route::get('/pareja/{pareja}',[ApiParejaController::class,"show"]);
+Route::post('/pareja',[ApiParejaController::class,"store"]);
+Route::put('/pareja/{pareja}',[ApiParejaController::class,"update"]);
+
+
 
 
 Route::middleware(['auth:sanctum'])->group(function (){
