@@ -11,6 +11,7 @@ class Jugador extends Model
     use HasFactory;
 
     protected $guarded = ['id'];
+    protected $hidden = ['pivot'];
     //protected $with =['pareja'];
 
     public function user(){
