@@ -32,7 +32,6 @@ Route::get('/intervalo/{intervalo}',[IntervaloController::class,'index']);
 
 
 
-
 Route::get('/crear-pista', "PistaController@create");
 Route::get('/modificar-pista/{pista}', "PistaController@edit");
 
@@ -43,6 +42,11 @@ Route::post('/login',"RegisterController@storeLogin");
 
 
 Route::middleware('auth')->group(function(){
+
+    Route::get('/user',[\App\Http\Controllers\UserController::class,"show"])->name('datosUsuario');
+    Route::delete('/user/{user}',[\App\Http\Controllers\UserController::class,"destroy"]);
+    Route::get('/edit-user',[\App\Http\Controllers\UserController::class,"edit"]);
+    Route::put('/user/{user}',[\App\Http\Controllers\UserController::class,"update"]);
 
     Route::post('/register',[RegisterController::class,'store']);
 

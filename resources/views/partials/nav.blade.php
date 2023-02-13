@@ -16,6 +16,9 @@
                     </li>
                     @auth
                         <li class="nav-item">
+                            <a class="nav-link" href="/user">Tu Usuario</a>
+                        </li>
+                        <li class="nav-item">
                             <a class="nav-link" href="/logout">Logout</a>
                         </li>
                     @else
