@@ -18,6 +18,8 @@ use App\Http\Controllers\IntervaloController;
 Route::get('/', function () {
     return view('index');
 })->name('home');
+Route::get('/partida', [\App\Http\Controllers\PartidaController::class,'index']);
+
 
 //Petición get de todas las pistas
 Route::get('/pista', "PistaController@index");

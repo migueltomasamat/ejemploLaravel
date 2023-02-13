@@ -12,4 +12,8 @@ class Pareja extends Model
     public function jugadors(){
         return $this->belongsToMany(Jugador::class);
     }
+
+    public function partidas(){
+        return $this->belongsToMany(Partida::class)->withPivotValue('sorteo_saque');
+    }
 }

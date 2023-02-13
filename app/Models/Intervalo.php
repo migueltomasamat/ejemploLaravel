@@ -10,10 +10,14 @@ class Intervalo extends Model
     use HasFactory;
 
     public function user(){
-        return $this->BelongsTo(User::class);
+        return $this->belongsTo(User::class);
     }
 
     public function pista(){
         return $this->belongsTo(Pista::class);
+    }
+
+    public function partida(){
+        return $this->belongsTo(Partida::class);
     }
 }

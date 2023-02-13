@@ -33,7 +33,9 @@ class DatabaseSeeder extends Seeder
             ParejaSeeder::class,
             JugadorParejaSeeder::class,
             //PistaSeeder::class,
-            IntervaloSeeder::class
+            IntervaloSeeder::class,
+            PartidaSeeder::class,
+            ParejaPartidaSeeder::class
         ]);
     }
 }
