@@ -41,6 +41,7 @@ Route::get('/login', "RegisterController@createLogin");
 
 Route::get('/register',"RegisterController@create");
 Route::post('/login',"RegisterController@storeLogin");
+Route::get('/crear-partida',"PartidaController@create");
 
 
 Route::middleware('auth')->group(function(){

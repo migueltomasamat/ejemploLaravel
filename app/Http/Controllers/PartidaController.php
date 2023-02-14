@@ -25,7 +25,7 @@ class PartidaController extends Controller
      */
     public function create()
     {
-        //
+        return view('partida.show');
     }
 
     /**
